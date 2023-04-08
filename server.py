@@ -99,7 +99,7 @@ def members():
 def work():
     return "working"
 
-@app.route("/1")
+@app.route("/fix")
 def work1():
     return "working1"
 
