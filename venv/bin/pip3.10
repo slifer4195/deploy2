@@ -1,4 +1,4 @@
-#!/Users/sungrungyoo/openAI/flask/venv/bin/python3.10
+#!/Users/sungrungyoo/react/excel/venv/bin/python3.10
 # -*- coding: utf-8 -*-
 import re
 import sys
