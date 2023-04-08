@@ -99,7 +99,7 @@ def members():
 def work():
     return "working"
 
-@app.route("/fix")
+@app.route("/fix",methods=['POST'])
 def work1():
     return "working1"
 
@@ -108,20 +108,19 @@ def work1():
 @app.route('/api/messages', methods=['POST'])
 def messages():
     message = request.get_json()['message']
-    # # print(message)
-    # msg = message['message']
-    # value = msg['value']
-    # print(value)
-    # print(test(value))
-    # analyzeResponseParse = test(value)
-    # formula = analyzeResponseParse[0]
-    # targetCell = analyzeResponseParse[1]
-    # insert(formula, targetCell, wks)
-    # # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
-    # response = {'status': 'ok'}
+    # print(message)
+    msg = message['message']
+    value = msg['value']
+    print(value)
+    print(test(value))
+    analyzeResponseParse = test(value)
+    formula = analyzeResponseParse[0]
+    targetCell = analyzeResponseParse[1]
+    insert(formula, targetCell, wks)
+    # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+    response = {'status': 'ok'}
 
-    # return jsonify(response)
-    return "fef"
+    return jsonify(response)
 
 
 
