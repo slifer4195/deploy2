@@ -102,7 +102,8 @@ def work():
 @app.route("/fix",methods=['POST', 'GET'])
 def work1():
     # if request.method == "OPTIONS":
-    # message = request.get_json()['message']
+    message = request.get_json()['message']
+    msg = message['message']
         # pass
         # if message:
         #     return "message received from api"
@@ -110,8 +111,8 @@ def work1():
         #     return "wtf api"
     # else:
     # return request.method 
-    message = {'text': 'goodbye from Flask!'}
-    return jsonify(message)
+    # message = {'text': 'goodbye from Flask!'}
+    return jsonify(msg)
 
 
 
