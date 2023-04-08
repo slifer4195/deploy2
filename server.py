@@ -105,8 +105,8 @@ def work1():
         message = request.get_json()['message']
         if message:
             return "message received"
-    else:
-        return "working1"
+    # else:
+    return "working1"
 
 
 
