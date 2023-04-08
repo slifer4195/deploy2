@@ -101,7 +101,11 @@ def work():
 
 @app.route("/fix",methods=['POST', 'GET'])
 def work1():
-    return "working1"
+    message = request.get_json()['message']
+    if message:
+        return "message received"
+    else:
+        return "working1"
 
 
 
