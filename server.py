@@ -101,13 +101,13 @@ def work():
 
 @app.route("/fix",methods=['POST', 'GET'])
 def work1():
-    if request.method == "OPTIONS":
-        message = request.get_json()['message']
+    # if request.method == "OPTIONS":
+    message = request.get_json()['message']
         # pass
-        if message:
-            return "message received from api"
-        else:
-            return "wtf api"
+        # if message:
+        #     return "message received from api"
+        # else:
+        #     return "wtf api"
     # else:
     return request.method 
 
