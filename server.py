@@ -101,27 +101,40 @@ def work():
 
 @app.route("/fix",methods=['POST', 'GET'])
 def work1():
-    # if request.method == "OPTIONS":
-    message = request.get_json()['message']
-    msg = message['message']
-    value = msg['value']
-    analyzeResponseParse = test(value)
-    formula = analyzeResponseParse[0]
-        # pass
-        # if message:
-        #     return "message received from api"
-        # else:
-        #     return "wtf api"
-    # else:
-    # return request.method 
-    # message = {'text': 'goodbye from Flask!'}
-    # analyzeResponseParse = test(value)
-    # formula = analyzeResponseParse[0]
-    # targetCell = analyzeResponseParse[1]
-    # insert(formula, targetCell, wks)
-    # # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
-    # response = {'status': 'ok'}
-    return "jsonify(message)"
+    if request.method == 'POST':
+        try:
+            message = request.get_json()['message']
+            # do something with the message here...
+            return jsonify({'success': True})
+        except (TypeError, KeyError):
+            # handle the case where the request payload is invalid or missing the "message" field
+            return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
+    else:
+        # handle the case where the HTTP method is not POST
+        return jsonify({'success': False, 'message': 'Unsupported HTTP method'})
+
+# def work1():
+#     # if request.method == "OPTIONS":
+#     message = request.get_json()['message']
+#     msg = message['message']
+#     value = msg['value']
+#     analyzeResponseParse = test(value)
+#     formula = analyzeResponseParse[0]
+#         # pass
+#         # if message:
+#         #     return "message received from api"
+#         # else:
+#         #     return "wtf api"
+#     # else:
+#     # return request.method 
+#     # message = {'text': 'goodbye from Flask!'}
+#     # analyzeResponseParse = test(value)
+#     # formula = analyzeResponseParse[0]
+#     # targetCell = analyzeResponseParse[1]
+#     # insert(formula, targetCell, wks)
+#     # # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+#     # response = {'status': 'ok'}
+#     return "jsonify(message)"
 
 
 
