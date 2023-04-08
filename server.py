@@ -104,6 +104,7 @@ def work1():
     # if request.method == "OPTIONS":
     message = request.get_json()['message']
     msg = message['message']
+    value = msg['value']
         # pass
         # if message:
         #     return "message received from api"
@@ -112,7 +113,13 @@ def work1():
     # else:
     # return request.method 
     # message = {'text': 'goodbye from Flask!'}
-    return jsonify(msg)
+    analyzeResponseParse = test(value)
+    formula = analyzeResponseParse[0]
+    targetCell = analyzeResponseParse[1]
+    insert(formula, targetCell, wks)
+    # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+    response = {'status': 'ok'}
+    return jsonify(response)
 
 
 
