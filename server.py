@@ -82,7 +82,7 @@ wks = sh.worksheet("Sheet1")
 # getWorksheet(wks)
 
 
-@app.route('/my-function', methods=['POST'])
+@app.route('/my-function', methods=['POST', 'GET'])
 def my_function():
     # code to execute the function goes here
     print("Was called")
@@ -105,7 +105,7 @@ def work1():
 
 
 
-@app.route('/api/messages', methods=['POST'])
+@app.route('/api/messages', methods=['POST', 'GET'])
 def messages():
     message = request.get_json()['message']
     # print(message)
