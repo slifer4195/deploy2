@@ -105,7 +105,9 @@ def work1():
         try:
             message = request.get_json()['message']
             # do something with the message here...
-            return jsonify({'success': True})
+            msg = message['message']
+            value = msg['value']
+            return jsonify(value)
         except (TypeError, KeyError):
             # handle the case where the request payload is invalid or missing the "message" field
             return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
