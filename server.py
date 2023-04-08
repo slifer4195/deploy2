@@ -99,6 +99,11 @@ def members():
 def work():
     return "working"
 
+@app.route("/1")
+def work():
+    return "working1"
+
+
 
 @app.route('/api/messages', methods=['POST'])
 def messages():
