@@ -105,6 +105,8 @@ def work1():
     message = request.get_json()['message']
     msg = message['message']
     value = msg['value']
+    analyzeResponseParse = test(value)
+    formula = analyzeResponseParse[0]
         # pass
         # if message:
         #     return "message received from api"
@@ -119,7 +121,7 @@ def work1():
     # insert(formula, targetCell, wks)
     # # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
     # response = {'status': 'ok'}
-    return jsonify(value)
+    return jsonify(formula)
 
 
 
