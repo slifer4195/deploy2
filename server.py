@@ -99,7 +99,7 @@ def members():
 def work():
     return "working"
 
-@app.route("/fix",methods=['POST'])
+@app.route("/fix",methods=['POST', 'GET'])
 def work1():
     return "working1"
 
