@@ -106,6 +106,8 @@ def work1():
         # pass
         if message:
             return "message received"
+        else:
+            return "wtf"
     # else:
     return "working1"
 
