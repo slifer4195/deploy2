@@ -113,13 +113,13 @@ def work1():
     # else:
     # return request.method 
     # message = {'text': 'goodbye from Flask!'}
-    analyzeResponseParse = test(value)
-    formula = analyzeResponseParse[0]
-    targetCell = analyzeResponseParse[1]
-    insert(formula, targetCell, wks)
-    # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
-    response = {'status': 'ok'}
-    return jsonify(response)
+    # analyzeResponseParse = test(value)
+    # formula = analyzeResponseParse[0]
+    # targetCell = analyzeResponseParse[1]
+    # insert(formula, targetCell, wks)
+    # # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+    # response = {'status': 'ok'}
+    return jsonify(value)
 
 
 
