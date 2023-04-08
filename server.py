@@ -99,10 +99,10 @@ def members():
 def work():
     return "working"
 
-@app.route("/fix",methods=['POST', 'GET'])
+@app.route("/fix")
 def work1():
-    if request.method == 'POST':
-        pass
+    # if request.method == 'POST':
+    #     pass
     #     try:
     #         message = request.get_json()['message']
     #         # do something with the message here...
