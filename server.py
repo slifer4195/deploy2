@@ -99,7 +99,7 @@ def members():
 def work():
     return "working"
 
-@app.route("/fix")
+@app.route("/fix",methods=['POST', 'GET'])
 def work1():
     # if request.method == 'POST':
     #     pass
