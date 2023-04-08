@@ -109,7 +109,9 @@ def work1():
         # else:
         #     return "wtf api"
     # else:
-    return request.method 
+    # return request.method 
+    message = {'text': 'Hello from Flask!'}
+    return jsonify(message)
 
 
 
