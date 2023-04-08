@@ -15,107 +15,111 @@ from helper.automator import *
 
 
 app = Flask(__name__)
-bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
-db = SQLAlchemy(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
+@app.route('/')
+def home():
+    return "hello"
+# bcrypt = Bcrypt(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# app.config['SECRET_KEY'] = 'thisisasecretkey'
+# db = SQLAlchemy(app)
 
-CORS(app)
+# login_manager = LoginManager()
+# login_manager.init_app(app)
+# login_manager.login_view = 'login'
 
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False, unique=True)
-    password = db.Column(db.String(80), nullable=False)
+# CORS(app)
 
 
-class RegisterForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
-
-    confrimPassword = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Confirm Password"})
-
-    submit = SubmitField('Register')
-
-    def validate_username(self, username):
-        existing_user_username = User.query.filter_by(
-            username=username.data).first()
-        if existing_user_username:
-            raise ValidationError(
-                'That username already exists. Please choose a different one.')
-
-    def validate_password(self, password, confirmPassword):
-        if password != confirmPassword:
-             raise ValidationError(
-                'That username already exists. Please choose a different one.')
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return User.query.get(int(user_id))
 
 
-class LoginForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
-
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
-
-    submit = SubmitField('Login')
+# class User(db.Model, UserMixin):
+#     id = db.Column(db.Integer, primary_key=True)
+#     username = db.Column(db.String(20), nullable=False, unique=True)
+#     password = db.Column(db.String(80), nullable=False)
 
 
+# class RegisterForm(FlaskForm):
+#     username = StringField(validators=[
+#                            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+
+#     password = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+
+#     confrimPassword = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Confirm Password"})
+
+#     submit = SubmitField('Register')
+
+#     def validate_username(self, username):
+#         existing_user_username = User.query.filter_by(
+#             username=username.data).first()
+#         if existing_user_username:
+#             raise ValidationError(
+#                 'That username already exists. Please choose a different one.')
+
+#     def validate_password(self, password, confirmPassword):
+#         if password != confirmPassword:
+#              raise ValidationError(
+#                 'That username already exists. Please choose a different one.')
 
 
-sa = gspread.service_account(filename='script.json')
-sh = sa.open('student')
+# class LoginForm(FlaskForm):
+#     username = StringField(validators=[
+#                            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
-wks = sh.worksheet("Sheet1")
-# getWorksheet(wks)
+#     password = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
-
-@app.route('/my-function', methods=['POST'])
-def my_function():
-    # code to execute the function goes here
-    print("Was called")
-    wks.update('A7', 'aungs')
-
-    return 'Function executed successfully!'
+#     submit = SubmitField('Login')
 
 
-@app.route("/members")
-def members():
-    return {"members":["Member1", "Member2", "Member3"]}
-
-@app.route("/")
-def work():
-    return "working"
 
 
-@app.route('/api/messages', methods=['POST'])
-def messages():
-    message = request.get_json()['message']
-    # print(message)
-    msg = message['message']
-    value = msg['value']
-    print(value)
-    print(test(value))
-    analyzeResponseParse = test(value)
-    formula = analyzeResponseParse[0]
-    targetCell = analyzeResponseParse[1]
-    insert(formula, targetCell, wks)
-    # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
-    response = {'status': 'ok'}
+# sa = gspread.service_account(filename='script.json')
+# sh = sa.open('student')
 
-    return jsonify(response)
+# wks = sh.worksheet("Sheet1")
+# # getWorksheet(wks)
+
+
+# @app.route('/my-function', methods=['POST'])
+# def my_function():
+#     # code to execute the function goes here
+#     print("Was called")
+#     wks.update('A7', 'aungs')
+
+#     return 'Function executed successfully!'
+
+
+# @app.route("/members")
+# def members():
+#     return {"members":["Member1", "Member2", "Member3"]}
+
+# @app.route("/")
+# def work():
+#     return "working"
+
+
+# @app.route('/api/messages', methods=['POST'])
+# def messages():
+#     message = request.get_json()['message']
+#     # print(message)
+#     msg = message['message']
+#     value = msg['value']
+#     print(value)
+#     print(test(value))
+#     analyzeResponseParse = test(value)
+#     formula = analyzeResponseParse[0]
+#     targetCell = analyzeResponseParse[1]
+#     insert(formula, targetCell, wks)
+#     # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+#     response = {'status': 'ok'}
+
+#     return jsonify(response)
 
 
 
