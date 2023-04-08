@@ -100,7 +100,7 @@ def work():
     return "working"
 
 @app.route("/1")
-def work():
+def work1():
     return "working1"
 
 
