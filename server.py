@@ -105,11 +105,11 @@ def work1():
         message = request.get_json()['message']
         # pass
         if message:
-            return "message received"
+            return "message received from api"
         else:
-            return "wtf"
+            return "wtf api"
     # else:
-    return "working1"
+    return request.method 
 
 
 
