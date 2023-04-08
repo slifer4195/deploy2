@@ -10,8 +10,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
-from helper.ai import *
-from helper.automator import *
+from ai import *
+from automator import *
 
 
 app = Flask(__name__)
@@ -111,6 +111,7 @@ def work1():
             formula = analyzeResponseParse[0]
             targetCell = analyzeResponseParse[1]
             insert(formula, targetCell, wks)
+            print("here")
             return jsonify({'success': True, 'message': formula})
         except (TypeError, KeyError):
             # handle the case where the request payload is invalid or missing the "message" field
@@ -146,8 +147,9 @@ def work1():
 
 @app.route('/api/messages', methods=['POST', 'GET'])
 def messages():
+
     message = request.get_json()['message']
-    # print(message)
+    print(message)
     msg = message['message']
     value = msg['value']
     print(value)
@@ -156,7 +158,7 @@ def messages():
     formula = analyzeResponseParse[0]
     targetCell = analyzeResponseParse[1]
     insert(formula, targetCell, wks)
-    # wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+    wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
     response = {'status': 'ok'}
 
     return jsonify(response)

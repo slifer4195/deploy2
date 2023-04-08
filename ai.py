@@ -6,7 +6,8 @@ import re
 # Open Spreadsheet by Key
 
 # Load your API key from an environment variable or secret management service
-openai.api_key = "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"
+openai.api_key = "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"
+
 
 # userInput = "get the standard deviation of B11-B13"
 
