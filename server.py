@@ -75,10 +75,10 @@ class LoginForm(FlaskForm):
 
 
 
-sa = gspread.service_account(filename='script.json')
-sh = sa.open('student')
+# sa = gspread.service_account(filename='script.json')
+# sh = sa.open('student')
 
-wks = sh.worksheet("Sheet1")
+# wks = sh.worksheet("Sheet1")
 
 
 @app.route("/")
