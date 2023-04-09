@@ -1,12 +1,16 @@
 import openai
 import gspread
 import re
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-
+openai.api_key = os.getenv('openai.api_key')
+print(openai.api_key)
 # Open Spreadsheet by Key
 
 # Load your API key from an environment variable or secret management service
-openai.api_key = "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"
+# openai.api_key = "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"
 
 
 # userInput = "get the standard deviation of B11-B13"
