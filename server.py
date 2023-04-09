@@ -11,7 +11,7 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import InputRequired, Length, ValidationError
 from flask_bcrypt import Bcrypt
 from ai import *
-# from automator import *
+from automator import *
 
 
 app = Flask(__name__)
@@ -75,10 +75,10 @@ app = Flask(__name__)
 
 
 
-# sa = gspread.service_account(filename='script.json')
-# sh = sa.open('student')
+sa = gspread.service_account(filename='script.json')
+sh = sa.open('student')
 
-# wks = sh.worksheet("Sheet1")
+wks = sh.worksheet("Sheet1")
 
 
 @app.route("/")
@@ -97,8 +97,8 @@ def work1():
         value = msg['value']
         analyzeResponseParse = test(value)
         formula = analyzeResponseParse[0]
-    #     # targetCell = analyzeResponseParse[1]
-    #     # insert(formula, targetCell, wks)
+        targetCell = analyzeResponseParse[1]
+        insert(formula, targetCell, wks)
     #     print("here", value)
         return jsonify({'success': True, 'message':formula})
     #     except (TypeError, KeyError):
