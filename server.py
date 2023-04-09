@@ -1,15 +1,15 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import gspread
-import random
-from datetime import datetime
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
-from flask_bcrypt import Bcrypt
+# import gspread
+# import random
+# from datetime import datetime
+# from flask import Flask, render_template, url_for, flash, redirect
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, PasswordField, SubmitField
+# from wtforms.validators import InputRequired, Length, ValidationError
+# from flask_bcrypt import Bcrypt
 # from ai import *
 # from automator import *
 
