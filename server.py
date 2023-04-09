@@ -85,28 +85,28 @@ app = Flask(__name__)
 def work():
     return "working"
 
-# @app.route("/fix")
-# def work1():
-#     print("calling it")
-#     # if request.method == 'POST':
-#     # #     pass
-#     # #     try:
-#     #     message = request.get_json()['message']
-#     # #         # do something with the message here...
-#     #     msg = message['message']
-#     #     value = msg['value']
-#     #     # analyzeResponseParse = test(value)
-#     #     # formula = analyzeResponseParse[0]
-#     #     # targetCell = analyzeResponseParse[1]
-#     #     # insert(formula, targetCell, wks)
-#     #     print("here", value)
-#     #     return jsonify({'success': True, 'message':value})
-#     #     except (TypeError, KeyError):
-#     #         # handle the case where the request payload is invalid or missing the "message" field
-#     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
-#     # else:
-#     #     # handle the case where the HTTP method is not POST
-#     return jsonify({'success': True, 'message':"value"})
+@app.route("/fix")
+def work1():
+    print("calling it")
+    # if request.method == 'POST':
+    # #     pass
+    # #     try:
+    #     message = request.get_json()['message']
+    # #         # do something with the message here...
+    #     msg = message['message']
+    #     value = msg['value']
+    #     # analyzeResponseParse = test(value)
+    #     # formula = analyzeResponseParse[0]
+    #     # targetCell = analyzeResponseParse[1]
+    #     # insert(formula, targetCell, wks)
+    #     print("here", value)
+    #     return jsonify({'success': True, 'message':value})
+    #     except (TypeError, KeyError):
+    #         # handle the case where the request payload is invalid or missing the "message" field
+    #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
+    # else:
+    #     # handle the case where the HTTP method is not POST
+    return jsonify({'success': True, 'message':"value"})
 
 # def work1():
 #     # if request.method == "OPTIONS":
