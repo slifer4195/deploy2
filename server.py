@@ -79,21 +79,7 @@ sa = gspread.service_account(filename='script.json')
 sh = sa.open('student')
 
 wks = sh.worksheet("Sheet1")
-# getWorksheet(wks)
 
-
-@app.route('/my-function', methods=['POST', 'GET'])
-def my_function():
-    # code to execute the function goes here
-    print("Was called")
-    wks.update('A7', 'aungs')
-
-    return 'Function executed successfully!'
-
-
-@app.route("/members")
-def members():
-    return {"members":["Member1", "Member2", "Member3"]}
 
 @app.route("/")
 def work():
@@ -101,6 +87,7 @@ def work():
 
 @app.route("/fix",methods=['POST', 'GET'])
 def work1():
+    print("calling it")
     if request.method == 'POST':
     #     pass
     #     try:
@@ -119,7 +106,7 @@ def work1():
     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
     # else:
     #     # handle the case where the HTTP method is not POST
-    return "success"
+    return jsonify({'success': True, 'message':value})
 
 # def work1():
 #     # if request.method == "OPTIONS":
