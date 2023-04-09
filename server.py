@@ -85,28 +85,28 @@ wks = sh.worksheet("Sheet1")
 def work():
     return "working"
 
-@app.route("/fix")
-def work1():
-    print("calling it")
-    # if request.method == 'POST':
-    # #     pass
-    # #     try:
-    #     message = request.get_json()['message']
-    # #         # do something with the message here...
-    #     msg = message['message']
-    #     value = msg['value']
-    #     # analyzeResponseParse = test(value)
-    #     # formula = analyzeResponseParse[0]
-    #     # targetCell = analyzeResponseParse[1]
-    #     # insert(formula, targetCell, wks)
-    #     print("here", value)
-    #     return jsonify({'success': True, 'message':value})
-    #     except (TypeError, KeyError):
-    #         # handle the case where the request payload is invalid or missing the "message" field
-    #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
-    # else:
-    #     # handle the case where the HTTP method is not POST
-    return jsonify({'success': True, 'message':"value"})
+# @app.route("/fix")
+# def work1():
+#     print("calling it")
+#     # if request.method == 'POST':
+#     # #     pass
+#     # #     try:
+#     #     message = request.get_json()['message']
+#     # #         # do something with the message here...
+#     #     msg = message['message']
+#     #     value = msg['value']
+#     #     # analyzeResponseParse = test(value)
+#     #     # formula = analyzeResponseParse[0]
+#     #     # targetCell = analyzeResponseParse[1]
+#     #     # insert(formula, targetCell, wks)
+#     #     print("here", value)
+#     #     return jsonify({'success': True, 'message':value})
+#     #     except (TypeError, KeyError):
+#     #         # handle the case where the request payload is invalid or missing the "message" field
+#     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
+#     # else:
+#     #     # handle the case where the HTTP method is not POST
+#     return jsonify({'success': True, 'message':"value"})
 
 # def work1():
 #     # if request.method == "OPTIONS":
@@ -133,23 +133,23 @@ def work1():
 
 
 
-@app.route('/api/messages', methods=['POST', 'GET'])
-def messages():
+# @app.route('/api/messages', methods=['POST', 'GET'])
+# def messages():
 
-    message = request.get_json()['message']
-    print(message)
-    msg = message['message']
-    value = msg['value']
-    print(value)
-    print(test(value))
-    analyzeResponseParse = test(value)
-    formula = analyzeResponseParse[0]
-    targetCell = analyzeResponseParse[1]
-    insert(formula, targetCell, wks)
-    wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
-    response = {'status': 'ok'}
+#     message = request.get_json()['message']
+#     print(message)
+#     msg = message['message']
+#     value = msg['value']
+#     print(value)
+#     print(test(value))
+#     analyzeResponseParse = test(value)
+#     formula = analyzeResponseParse[0]
+#     targetCell = analyzeResponseParse[1]
+#     insert(formula, targetCell, wks)
+#     wks.update(test(value)[1], test(value)[0], value_input_option='USER_ENTERED')
+#     response = {'status': 'ok'}
 
-    return jsonify(response)
+#     return jsonify(response)
 
 
 
