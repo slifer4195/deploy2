@@ -95,12 +95,12 @@ def work1():
     # #         # do something with the message here...
         msg = message['message']
         value = msg['value']
-        # analyzeResponseParse = test(value)
-    #     # formula = analyzeResponseParse[0]
+        analyzeResponseParse = test(value)
+        formula = analyzeResponseParse[0]
     #     # targetCell = analyzeResponseParse[1]
     #     # insert(formula, targetCell, wks)
     #     print("here", value)
-        return jsonify({'success': True, 'message':message})
+        return jsonify({'success': True, 'message':formula})
     #     except (TypeError, KeyError):
     #         # handle the case where the request payload is invalid or missing the "message" field
     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
