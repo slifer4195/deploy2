@@ -93,14 +93,14 @@ def work1():
     # #     try:
         message = request.get_json()['message']
     # #         # do something with the message here...
-        # msg = message['message']
-        # value = msg['value']
+        msg = message['message']
+        value = msg['value']
     #     # analyzeResponseParse = test(value)
     #     # formula = analyzeResponseParse[0]
     #     # targetCell = analyzeResponseParse[1]
     #     # insert(formula, targetCell, wks)
     #     print("here", value)
-        return jsonify({'success': True, 'message':"value"})
+        return jsonify({'success': True, 'message':value})
     #     except (TypeError, KeyError):
     #         # handle the case where the request payload is invalid or missing the "message" field
     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
