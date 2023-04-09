@@ -1,66 +1,66 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import gspread
-import random
-from datetime import datetime
-from flask import Flask, render_template, url_for, flash, redirect
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError
-from flask_bcrypt import Bcrypt
-from ai import *
-from automator import *
+# from flask_cors import CORS
+# import gspread
+# import random
+# from datetime import datetime
+# from flask import Flask, render_template, url_for, flash, redirect
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+# from flask_wtf import FlaskForm
+# from wtforms import StringField, PasswordField, SubmitField
+# from wtforms.validators import InputRequired, Length, ValidationError
+# from flask_bcrypt import Bcrypt
+# from ai import *
+# from automator import *
 
 
 app = Flask(__name__)
-bcrypt = Bcrypt(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
-db = SQLAlchemy(app)
+# bcrypt = Bcrypt(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# app.config['SECRET_KEY'] = 'thisisasecretkey'
+# db = SQLAlchemy(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
+# login_manager = LoginManager()
+# login_manager.init_app(app)
+# login_manager.login_view = 'login'
 
-CORS(app)
-
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
+# CORS(app)
 
 
-# class User(db.Model, UserMixin):
-#     id = db.Column(db.Integer, primary_key=True)
-#     username = db.Column(db.String(20), nullable=False, unique=True)
-#     password = db.Column(db.String(80), nullable=False)
+# # @login_manager.user_loader
+# # def load_user(user_id):
+# #     return User.query.get(int(user_id))
 
 
-class RegisterForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+# # class User(db.Model, UserMixin):
+# #     id = db.Column(db.Integer, primary_key=True)
+# #     username = db.Column(db.String(20), nullable=False, unique=True)
+# #     password = db.Column(db.String(80), nullable=False)
 
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
-    confrimPassword = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Confirm Password"})
+# class RegisterForm(FlaskForm):
+#     username = StringField(validators=[
+#                            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
-    submit = SubmitField('Register')
+#     password = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
-    def validate_username(self, username):
-        existing_user_username = User.query.filter_by(
-            username=username.data).first()
-        if existing_user_username:
-            raise ValidationError(
-                'That username already exists. Please choose a different one.')
+#     confrimPassword = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Confirm Password"})
 
-    def validate_password(self, password, confirmPassword):
-        if password != confirmPassword:
-             raise ValidationError(
-                'That username already exists. Please choose a different one.')
+#     submit = SubmitField('Register')
+
+#     def validate_username(self, username):
+#         existing_user_username = User.query.filter_by(
+#             username=username.data).first()
+#         if existing_user_username:
+#             raise ValidationError(
+#                 'That username already exists. Please choose a different one.')
+
+#     def validate_password(self, password, confirmPassword):
+#         if password != confirmPassword:
+#              raise ValidationError(
+#                 'That username already exists. Please choose a different one.')
 
 
 # class LoginForm(FlaskForm):
