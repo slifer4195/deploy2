@@ -85,10 +85,10 @@ app = Flask(__name__)
 def work():
     return "working"
 
-@app.route("/fix", methods=['POST'])
+@app.route("/fix", methods=['OPTION'])
 def work1():
     print("calling it")
-    if request.method == 'POST':
+    if request.method == 'OPTION':
     # #     pass
     # #     try:
         message = request.get_json()['message']
