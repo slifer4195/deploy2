@@ -63,14 +63,14 @@ class RegisterForm(FlaskForm):
                 'That username already exists. Please choose a different one.')
 
 
-class LoginForm(FlaskForm):
-    username = StringField(validators=[
-                           InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+# class LoginForm(FlaskForm):
+#     username = StringField(validators=[
+#                            InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
 
-    password = PasswordField(validators=[
-                             InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
+#     password = PasswordField(validators=[
+#                              InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
 
-    submit = SubmitField('Login')
+#     submit = SubmitField('Login')
 
 
 
