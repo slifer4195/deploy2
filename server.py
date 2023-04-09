@@ -100,7 +100,7 @@ def work1():
     #     # targetCell = analyzeResponseParse[1]
     #     # insert(formula, targetCell, wks)
     #     print("here", value)
-        return jsonify({'success': True, 'message':value})
+        return jsonify({'success': True, 'message':message})
     #     except (TypeError, KeyError):
     #         # handle the case where the request payload is invalid or missing the "message" field
     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
