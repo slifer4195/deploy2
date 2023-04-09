@@ -81,7 +81,7 @@ app = Flask(__name__)
 # wks = sh.worksheet("Sheet1")
 
 
-@app.route("/", method= ['GET'])
+@app.route("/")
 def work():
     return "working"
 
