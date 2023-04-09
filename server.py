@@ -85,7 +85,7 @@ wks = sh.worksheet("Sheet1")
 def work():
     return "working"
 
-@app.route("/fix",methods=['POST', 'GET'])
+@app.route("/fix")
 def work1():
     print("calling it")
     # if request.method == 'POST':
