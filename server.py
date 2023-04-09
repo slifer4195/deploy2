@@ -106,7 +106,7 @@ def work1():
     #         return jsonify({'success': False, 'message': 'Invalid or missing request payload'})
     # else:
     #     # handle the case where the HTTP method is not POST
-    return jsonify({'success': True, 'message':value})
+    return jsonify({'success': True, 'message':"value"})
 
 # def work1():
 #     # if request.method == "OPTIONS":
