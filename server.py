@@ -98,7 +98,7 @@ def work1():
         analyzeResponseParse = test(value)
         formula = analyzeResponseParse[0]
         targetCell = analyzeResponseParse[1]
-        # insert(formula, targetCell, wks)
+        insert(formula, targetCell, wks)
     #     print("here", value)
         return jsonify({'success': True, 'message':formula})
     #     except (TypeError, KeyError):
