@@ -10,7 +10,6 @@ print(openai.api_key)
 # Open Spreadsheet by Key
 
 # Load your API key from an environment variable or secret management service
-# openai.api_key = "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"
 
 
 # userInput = "get the standard deviation of B11-B13"
