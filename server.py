@@ -41,9 +41,9 @@ def work1():
     print("calling it")
     if request.method == 'POST':
         message = request.get_json()['message']
-        msg = message['message']
-        value = msg['value']
-      
+        value = message['message']
+        value = value['value']
+        print(value)
         if test(value)[1] == actions[0]:
             analyzeResponseParse = test(value)[0]
             formula = analyzeResponseParse[0]
@@ -52,6 +52,7 @@ def work1():
             # print("formula")
 
         elif test(value)[1] == actions[1]:
+            print("fjewfjewf")
             modifyResponseParse = test(value)[0]
             # print("from here", modifyResponseParse[0])
             try:
