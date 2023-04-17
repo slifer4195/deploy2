@@ -23,8 +23,7 @@ def test(userInput):
         )
 
     botResponse = response.choices[0].text
-    print("user input is:", userInput)
-    print("Bot response is: ", botResponse)
+
     if "formula" in botResponse.lower():
         analyzePrompt = "You are an expert in google sheets and you want to help interpret what people what do do in google sheets. A user asks '{}'. If the user did not specify a target cell, put 'none' in the target cell section. Respond with the formula, using colon format the user wants as well as the target cell the user want to put the formula in in the format: [formula], [target cell]".format(userInput)
         response2 = openai.Completion.create(
@@ -40,8 +39,6 @@ def test(userInput):
         return [analyzeResponseParse, actions[0]]
 
     else:
-        print("user input is:", userInput)
-        print("Bot response is: ", botResponse)
         modifyPrompt = "You are an expert in google sheets and you want to help interpret what people want to do in google sheets. A user asks '{}'. The user can only move data or switch data. For all answers, do not add 'Answer:' to the beginning. If the user wants to move data, only respond with: 'move, [old cell], [new cell]'.  If the user wants to switch data, only respond with: 'switch, [first cell], [second cell]'.".format(userInput)
         response2 = openai.Completion.create(
         model="text-davinci-003", 
