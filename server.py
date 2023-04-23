@@ -16,20 +16,46 @@ from automator import *
 from oauth2client.service_account import ServiceAccountCredentials
 
 
+
 app = Flask(__name__)
 
 CORS(app)
 
-
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('service_account.json', scope)
 gc = gspread.authorize(creds)
+# 1u3FxnKRtu5qteerQ6b3MoFVHqWaQ3lfD9u2KpYvJY5U'
+# 11oC81VbhDhRqE8NY2ZNrlEXIrdsAummmLxihhPqctmw
 
 # Open Spreadsheet by Key
-sheet = gc.open_by_key('11oC81VbhDhRqE8NY2ZNrlEXIrdsAummmLxihhPqctmw')
+
+global sheetKey
+global sheet
+global wks
+sheetKey = '11oC81VbhDhRqE8NY2ZNrlEXIrdsAummmLxihhPqctmw'
+# sheetKey = '1E7wsTz5dAgxCFgldGjfAMKpbhR4pBDjKCVhkWrZYESk'
+
+@app.route("/setKey", methods=['POST'])
+def work2():
+    if request.method == 'POST':
+        global sheetKey
+        global wks
+        global sheet
+        newKey = request.get_json()['key']
+        print(newKey)
+        sheet = gc.open_by_key(newKey)
+        wks = sheet.sheet1
+        sheet = newKey
+        print("Setting key ptthon")
+        return jsonify({'content': "we changed the key"})
+
+
+
+sheet = gc.open_by_key(sheetKey)
 
 # Select a specific sheet and pass worksheet object
 wks = sheet.sheet1
+
 
 
 @app.route("/")
@@ -43,7 +69,6 @@ def work1():
         message = request.get_json()['message']
         value = message['message']
         value = value['value']
-        print(value)
         if test(value)[1] == actions[0]:
             analyzeResponseParse = test(value)[0]
             formula = analyzeResponseParse[0]
@@ -52,7 +77,6 @@ def work1():
             # print("formula")
 
         elif test(value)[1] == actions[1]:
-            print("fjewfjewf")
             modifyResponseParse = test(value)[0]
             # print("from here", modifyResponseParse[0])
             try:
@@ -69,7 +93,7 @@ def work1():
                     model="text-davinci-003", 
                     prompt=catchPrompt, 
                     temperature=0, 
-                    max_tokens=150
+                    max_tokens=100
                     )
                     instruction = responseTest.choices[0].text
                     print(instruction)
