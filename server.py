@@ -102,7 +102,7 @@ def work1():
                 print("I could not understand your response, please try rephrasing your question")
                     
 
-        return jsonify({'success': True, 'message':"it works"})
+        return jsonify({'success': True, 'message':"I have finished the task"})
   
     return jsonify({'success': True, 'message':"value"})
 
