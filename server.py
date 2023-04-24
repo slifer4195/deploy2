@@ -35,7 +35,7 @@ global wks
 sheetKey = '11oC81VbhDhRqE8NY2ZNrlEXIrdsAummmLxihhPqctmw'
 # sheetKey = '1E7wsTz5dAgxCFgldGjfAMKpbhR4pBDjKCVhkWrZYESk'
 
-@app.route("/setKey", methods=['POST'])
+@app.route("/", methods=['POST'])
 def work2():
     if request.method == 'POST':
         global sheetKey
@@ -58,9 +58,6 @@ wks = sheet.sheet1
 
 
 
-@app.route("/")
-def work():
-    return "working"
 
 @app.route("/fix", methods=['GET', 'POST'])
 def work1():
