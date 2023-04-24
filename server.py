@@ -91,7 +91,7 @@ def work1():
                     model="text-davinci-003", 
                     prompt=catchPrompt, 
                     temperature=0, 
-                    max_tokens=100
+                    max_tokens=50
                     )
                     instruction = responseTest.choices[0].text
                     print(instruction)
