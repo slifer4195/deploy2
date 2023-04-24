@@ -46,7 +46,7 @@ def work2():
         sheet = gc.open_by_key(newKey)
         wks = sheet.sheet1
         sheet = newKey
-        print("Setting key ptthon")
+        print("Setting key ")
         return jsonify({'content': "we changed the key"})
 
 
@@ -65,6 +65,7 @@ def work():
 @app.route("/fix", methods=['GET', 'POST'])
 def work1():
     print("calling it")
+    print(wks)
     if request.method == 'POST':
         message = request.get_json()['message']
         value = message['message']
