@@ -64,10 +64,6 @@ def move(old_cell, new_cell, worksheet):
     worksheet.update(new_cell, value, value_input_option='USER_ENTERED')
     worksheet.update(old_cell, '')
 
-# Functionality: Bold a cell
-def bold(target_cell, worksheet):
-    cell_format = CellFormat(textFormat=TextFormat(bold=True))
-    format_cell_range(worksheet, target_cell, cell_format)
 
 # Functionality: Fit a column by wrapping text
 def fit_column_wrap(column, worksheet):

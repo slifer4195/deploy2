@@ -62,7 +62,6 @@ wks = sheet.sheet1
 @app.route("/fix", methods=['GET', 'POST'])
 def work1():
     print("calling it")
-    print(wks)
     if request.method == 'POST':
         message = request.get_json()['message']
         value = message['message']
@@ -72,7 +71,6 @@ def work1():
             formula = analyzeResponseParse[0]
             targetCell = analyzeResponseParse[1]
             insert(formula, targetCell, wks)
-            # print("formula")
 
         elif test(value)[1] == actions[1]:
             modifyResponseParse = test(value)[0]
@@ -91,7 +89,7 @@ def work1():
                     model="text-davinci-003", 
                     prompt=catchPrompt, 
                     temperature=0, 
-                    max_tokens=50
+                    max_tokens=100
                     )
                     instruction = responseTest.choices[0].text
                     print(instruction)
