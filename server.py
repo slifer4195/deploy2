@@ -35,19 +35,19 @@ global wks
 sheetKey = '11oC81VbhDhRqE8NY2ZNrlEXIrdsAummmLxihhPqctmw'
 # sheetKey = '1E7wsTz5dAgxCFgldGjfAMKpbhR4pBDjKCVhkWrZYESk'
 
-# @app.route("/", methods=['POST'])
-# def work2():
-#     if request.method == 'POST':
-#         global sheetKey
-#         global wks
-#         global sheet
-#         newKey = request.get_json()['key']
-#         print(newKey)
-#         sheet = gc.open_by_key(newKey)
-#         wks = sheet.sheet1
-#         sheet = newKey
-#         print("Setting key ")
-#         return jsonify({'content': "we changed the key"})
+@app.route("/", methods=['POST'])
+def work2():
+    if request.method == 'POST':
+        global sheetKey
+        global wks
+        global sheet
+        newKey = request.get_json()['key']
+        print(newKey)
+        sheet = gc.open_by_key(newKey)
+        wks = sheet.sheet1
+        sheet = newKey
+        print("Setting key ")
+        return jsonify({'content': "we changed the key"})
 
 
 
@@ -64,9 +64,6 @@ def work1():
     print("calling it")
     print(sheetKey)
     if request.method == 'POST':
-        sheetKey = request.get_json()['key']
-        sheet = gc.open_by_key(sheetKey)
-        wks = sheet.sheet1
         message = request.get_json()['message']
         value = message['message']
         value = value['value']
