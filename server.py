@@ -64,15 +64,9 @@ def work1():
     print("calling it")
     print(sheetKey)
     if request.method == 'POST':
-        global sheetKey
-        global wks
-        global sheet
-        newKey = request.get_json()['key']
-        print(newKey)
-        sheet = gc.open_by_key(newKey)
+        sheetKey = request.get_json()['key']
+        sheet = gc.open_by_key(sheetKey)
         wks = sheet.sheet1
-        sheet = newKey
-        print("Setting key ")
         message = request.get_json()['message']
         value = message['message']
         value = value['value']
